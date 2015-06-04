@@ -9,7 +9,7 @@ class ProcessError(Exception):
         self.command = command
         self.image = image
         self.stderr = stderr
-        super(ProcessError, self).__init__("Command '%s' in image '%s' returned non-zero exit status %s: %s" % (' '.join(command), image, exit_status, stderr))
+        super(ProcessError, self).__init__("Command '%s' in image '%s' returned non-zero exit status %s: %s" % (command, image, exit_status, stderr))
 
 CREATE_KWARGS = ["hostname", "user", "detach", "stdin_open", "tty", "mem_limit", "ports", "environment", "dns", "volumes", "volumes_from", "network_disabled", "name", "entrypoint", "cpu_shares", "working_dir", "domainname", "memswap_limit", "cpuset", "host_config", "mac_address", "labels"]
 

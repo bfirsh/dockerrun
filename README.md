@@ -9,10 +9,10 @@ It works a bit like this:
 >>> import dockerrun
 >>> client = dockerrun.from_env()
 
->>> client.run("ubuntu", ["echo", "hello world"])
+>>> client.run("ubuntu", "echo hello world")
 'hello world\n'
 
->>> client.run("ubuntu", ["cat", "missing"])
+>>> client.run("ubuntu", "cat missing")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "dockerrun/client.py", line 54, in run
