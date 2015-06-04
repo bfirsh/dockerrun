@@ -24,10 +24,7 @@ def from_env():
 class Client(docker.Client):
     @classmethod
     def from_env(cls):
-        kwargs = kwargs_from_env()
-        if 'tls' in kwargs:
-            kwargs['tls'].assert_hostname = False
-        return cls(**kwargs)
+        return cls(**kwargs_from_env(assert_hostname=False))
 
     def run(self, image, command=None, wait=True, stdout=True, stderr=False, **kwargs):
         create_kwargs = _dict_filter(kwargs, CREATE_KWARGS)
