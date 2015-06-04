@@ -29,7 +29,7 @@ class Client(docker.Client):
             kwargs['tls'].assert_hostname = False
         return cls(**kwargs)
 
-    def run(self, image, command=None, stdout=True, stderr=False, **kwargs):
+    def run(self, image, command=None, wait=True, stdout=True, stderr=False, **kwargs):
         create_kwargs = _dict_filter(kwargs, CREATE_KWARGS)
         try:
             container = self.create_container(image, command, **create_kwargs)
@@ -43,6 +43,9 @@ class Client(docker.Client):
 
         start_kwargs = _dict_filter(kwargs, START_KWARGS)
         self.start(container, **start_kwargs)
+
+        if not wait:
+            return container
 
         exit_status = self.wait(container)
         if exit_status != 0:
