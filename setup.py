@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(name='dockerrun',
       version='0.0.1',
-      description='',
+      description='A dead simple Python library for running Docker commands',
       author='Ben Firshman',
       author_email='ben@firshman.co.uk',
       url='https://github.com/bfirsh/dockerrun',
