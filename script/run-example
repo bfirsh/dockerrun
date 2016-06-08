@@ -1,0 +1,3 @@
+#!/bin/bash
+docker build -t dockerrun .
+exec docker run --rm -v /var/run/docker.sock:/var/run/docker.sock dockerrun python example.py
