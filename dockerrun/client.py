@@ -22,10 +22,6 @@ def from_env():
     return Client.from_env()
 
 class Client(docker.Client):
-    @classmethod
-    def from_env(cls):
-        return cls(**kwargs_from_env(assert_hostname=False))
-
     def run(self, image, command=None, wait=True, stdout=True, stderr=False, **kwargs):
         create_kwargs = _dict_filter(kwargs, CREATE_KWARGS)
         try:
