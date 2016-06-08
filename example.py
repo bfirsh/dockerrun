@@ -1,4 +1,4 @@
-from dockerrun import Client
+import dockerrun
 
-c = Client.from_env()
-print c.run("ubuntu", "echo hello world")
+client = dockerrun.from_env()
+print client.run("ubuntu", "echo hello world")
