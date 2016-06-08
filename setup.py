@@ -9,4 +9,5 @@ setup(name='dockerrun',
       author_email='ben@firshman.co.uk',
       url='https://github.com/bfirsh/dockerrun',
       packages=find_packages(exclude=['tests.*', 'tests']),
+      install_requires=['docker-py'],
      )
