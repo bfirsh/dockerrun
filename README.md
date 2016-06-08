@@ -19,6 +19,6 @@ Traceback (most recent call last):
     self.logs(container, stdout=False, stderr=True)
 dockerrun.client.ProcessError: Command 'cat missing' in image 'ubuntu' returned non-zero exit status 1: cat: missing: No such file or directory
 
->>> client.run("myapp", "tasks/reticulate-splines", wait=False)
+>>> client.run("myapp", "tasks/reticulate-splines", detach=True)
 {'Id': 'ee2b9f3c6d75fc309b114b5a021bfaa0b35cb807a1af036d256d8deff503f5ba', 'Warnings': None}
 ```

@@ -22,7 +22,7 @@ def from_env():
     return Client.from_env()
 
 class Client(docker.Client):
-    def run(self, image, command=None, wait=True, stdout=True, stderr=False, **kwargs):
+    def run(self, image, command=None, detach=False, stdout=True, stderr=False, **kwargs):
         create_kwargs = _dict_filter(kwargs, CREATE_KWARGS)
         try:
             container = self.create_container(image, command, **create_kwargs)
@@ -37,7 +37,7 @@ class Client(docker.Client):
         start_kwargs = _dict_filter(kwargs, START_KWARGS)
         self.start(container, **start_kwargs)
 
-        if not wait:
+        if detach:
             return container
 
         exit_status = self.wait(container)
