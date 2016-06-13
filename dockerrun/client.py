@@ -32,6 +32,8 @@ class Client(docker.Client):
                     and 'No such image' in str(e.explanation):
                 self.pull(image)
                 container = self.create_container(image, command)
+            else:
+                raise
 
 
         start_kwargs = _dict_filter(kwargs, START_KWARGS)
