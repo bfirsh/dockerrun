@@ -24,6 +24,8 @@ def from_env():
 class Client(docker.Client):
     def run(self, image, command=None, detach=False, stdout=True, stderr=False, **kwargs):
         create_kwargs = _dict_filter(kwargs, CREATE_KWARGS)
+        start_kwargs = _dict_filter(kwargs, START_KWARGS)
+        create_kwargs['host_config'] = self.create_host_config(start_kwargs)
         try:
             container = self.create_container(image, command, **create_kwargs)
         except APIError as e:
@@ -36,8 +38,7 @@ class Client(docker.Client):
                 raise
 
 
-        start_kwargs = _dict_filter(kwargs, START_KWARGS)
-        self.start(container, **start_kwargs)
+        self.start(container)
 
         if detach:
             return container
