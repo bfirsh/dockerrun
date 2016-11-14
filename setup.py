@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(name='dockerrun',
-      version='0.1.2',
+      version='0.1.3',
       description='A dead simple Python library for running Docker commands',
       author='Ben Firshman',
       author_email='ben@firshman.co.uk',
