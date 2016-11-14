@@ -18,9 +18,6 @@ START_KWARGS = ["binds", "port_bindings", "lxc_conf", "publish_all_ports", "link
 def _dict_filter(d, keys):
     return dict((k, v) for k, v in d.items() if k in keys)
 
-def from_env():
-    return Client.from_env()
-
 class Client(docker.Client):
     def run(self, image, command=None, detach=False, stdout=True, stderr=False, **kwargs):
         create_kwargs = _dict_filter(kwargs, CREATE_KWARGS)
@@ -53,3 +50,6 @@ class Client(docker.Client):
                 self.logs(container, stdout=False, stderr=True)
             )
         return self.logs(container, stdout=stdout, stderr=stderr)
+
+
+from_env = Client.from_env
